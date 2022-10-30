@@ -1,0 +1,32 @@
+.containerForm .form-content {
+    max-width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.containerForm {
+    margin: 7.5rem 0;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.button {    
+    background-color: var(--secondary-blue);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 4rem 0rem;
+    padding: 1.4rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.containerForm .empty {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
