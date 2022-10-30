@@ -1,0 +1,16 @@
+header {
+    background-color: var(--main-blue);
+    
+}
+header div {
+    max-width: 80%;
+    display: flex;
+    padding: 1.2rem 0;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+header div button {
+    display: block;
+}

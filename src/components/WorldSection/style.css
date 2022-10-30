@@ -1,0 +1,21 @@
+.world {
+    background-color: var(--secondary-blue);
+    padding: 4rem 0;
+}
+.world div {
+    max-width: 80%;
+    display: flex;
+    padding: 1.2rem 0;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.world div p {
+    font-size: 3rem;
+    color: #ffffff;
+}
+
+.world span {
+    color: var(--main-yellow);
+}

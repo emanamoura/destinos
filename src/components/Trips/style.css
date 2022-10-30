@@ -1,0 +1,12 @@
+.text-trip-box {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--main-yellow);
+}
+
+.trips-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 5rem;
+}

@@ -1,0 +1,29 @@
+.trip-container {
+    padding: 2rem;
+    color: var(--main-blue);
+    border: 1px solid var(--main-blue);
+    
+}
+
+.city {
+    font-size: 3rem;
+}
+
+.country {
+    font-size: 2rem;
+}
+
+.dates {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.8rem;
+}
+
+.trip-text {
+    font-size: 1.4rem;
+}
+
+.trip-buttons {
+    display: flex;
+    justify-content: space-between;
+}
