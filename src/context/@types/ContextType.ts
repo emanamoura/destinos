@@ -18,7 +18,13 @@ export interface ContextType {
     selectedCountry: string ;
     setSelectedCountry: (data: string) => void;
     addDestination: (object: Destination) => void;
+    deleteDestination: (cpf: string) => void;
+    editDestination: (cpf: string, object: Destination) => void;
     destinations: Destination[];
+    dataIda: string;
+    dataVolta: string;
+    setDataIda: (data: string) => void;
+    setDataVolta: (data: string) => void;
 }
 
 
@@ -27,6 +33,8 @@ export interface Destination {
     email: string;
     telefone: string;
     cpf: string;
+    dataIda: string;
+    dataVolta: string;
     selectedCity: string;
     selectedCountry: string;
 }

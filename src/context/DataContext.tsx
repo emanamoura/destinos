@@ -19,6 +19,8 @@ const DataContextProvider = ({ children }: DataProps) => {
   const [email, setEmail] = useState<string>("");
   const [telefone, setTelefone] = useState<string>("");
   const [cpf, setCpf] = useState<string>("");
+  const [dataIda, setDataIda] = useState("");
+  const [dataVolta, setDataVolta] = useState("");
   const [cities, setCities] = useState<Address[]>([] as Address[]);
   const [countries, setCountries] = useState<Address[]>([] as Address[]);
   const [selectedCity, setSelectedCity] = useState<string>("");
@@ -29,28 +31,61 @@ const DataContextProvider = ({ children }: DataProps) => {
 
   const fetchCities = useCallback(async () => {
     const cities = await client.getCities();
-    setCities([...cities]);
-  }, []);
+    console.log(cities)
+    console.log(selectedCountry)
+    const selectedCities = cities.filter(city => city.country_code === selectedCountry)
+    console.log(selectedCities)
+    setCities([...selectedCities]);
+  }, [selectedCountry]);
 
   const fetchCountries = useCallback(async () => {
-    const countries = await client.getCountries();
-    setCountries([...countries]);
+    const countriesfetched = await client.getCountries();
+    setCountries([...countriesfetched]);
   }, []);
-
-  useEffect(() => {
-    fetchCities();
-  }, [fetchCities]);
 
   useEffect(() => {
     fetchCountries();
   }, [fetchCountries]);
 
+  useEffect(() => {
+    fetchCities();
+  }, [fetchCities]);
+
+  
+
   const addDestination = useCallback(
     (object: Destination) => {
-      setDestinations([...destinations, object]);
+      const alreadyExists = destinations.find(destination => object.cpf === destination.cpf)
+      if(alreadyExists) {
+        window.alert("Já foi cadastrado !")
+        return;
+      } else {
+        setDestinations([...destinations, object]);
+      }
     },
     [destinations]
   );
+
+  const deleteDestination = useCallback(
+    (cpf: string )=> {
+      const newDestinations = destinations.filter(destination => destination.cpf !== cpf)
+      setDestinations(newDestinations)
+    },[destinations]
+  )
+
+  const editDestination = useCallback((cpf: string, object: Destination) => {
+    const newDestination = destinations.map((destination) => {
+      if(destination.cpf === cpf) {
+        return object;
+      } else {
+        return destination;
+      }
+    } )
+    if(newDestination) {
+      setDestinations(newDestination)
+    }
+    
+  }, [destinations])
 
   const contextValue = useMemo(
     () => ({
@@ -72,6 +107,12 @@ const DataContextProvider = ({ children }: DataProps) => {
       setSelectedCountry,
       destinations,
       addDestination,
+      deleteDestination,
+      editDestination,
+      dataIda,
+      setDataIda,
+      dataVolta,
+      setDataVolta
     }),
     [
       name,
@@ -92,6 +133,12 @@ const DataContextProvider = ({ children }: DataProps) => {
       setSelectedCountry,
       destinations,
       addDestination,
+      deleteDestination,
+      editDestination,
+      dataIda,
+      setDataIda,
+      dataVolta,
+      setDataVolta
     ]
   );
   return (
