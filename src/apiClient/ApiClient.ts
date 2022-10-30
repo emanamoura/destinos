@@ -4,6 +4,7 @@ import { api } from "./apiConfiguration"
 export interface Address {
     code: string;
     name: string;
+    country_code?: string;
 }
 
 class ApiClient {
@@ -22,7 +23,7 @@ class ApiClient {
     }
 
     async getCities() : Promise<Address[]> {
-        const city = await this.apiClient.get('/city').then(response => response.data.map((city : Address) => ({code: city.code, name: city.name})))
+        const city = await this.apiClient.get('/city').then(response => response.data.map((city : Address) => ({code: city.code, name: city.name, country_code: city.country_code})))
         return city;
     }
 }
